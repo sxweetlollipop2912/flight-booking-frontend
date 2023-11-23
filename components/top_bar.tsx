@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, {useEffect, useState} from "react";
 import {getLocalToken, removeLocalToken} from "@/api/utils";
 import {TOKEN} from "@/models/Token";
+import {useRouter} from "next/navigation";
 
 export default function TopBar() {
     const [accessToken, setToken]: [TOKEN | null, any] = useState(null)
@@ -25,6 +26,7 @@ export default function TopBar() {
 }
 
 function TopRightBar({hasLoggedIn}: { hasLoggedIn: boolean }) {
+    const router = useRouter()
     if (hasLoggedIn) {
         return (
             <div
@@ -39,10 +41,21 @@ function TopRightBar({hasLoggedIn}: { hasLoggedIn: boolean }) {
                 <span className="px-3">|</span>
                 <Link
                     className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+                    href="/history"
+                    rel="noopener noreferrer"
+                >
+                    History
+                </Link>
+                <span className="px-3">|</span>
+                <Link
+                    className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
                     href="/"
                     rel="noopener noreferrer"
                 >
-                    <button onClick={removeLocalToken}>
+                    <button onClick={() => {
+                        removeLocalToken()
+                        router.push('/')
+                    }}>
                         Log out
                     </button>
                 </Link>

@@ -4,6 +4,7 @@ import Button from "@/components/button";
 import {TOKEN} from "@/models/Token";
 import {loginGetToken} from "@/api/api";
 import {saveLocalToken} from "@/api/utils";
+import {useRouter} from "next/navigation";
 
 function loginAction(email: string, password: string) {
     loginGetToken(email, password)
@@ -16,6 +17,7 @@ function loginAction(email: string, password: string) {
 }
 
 export default function Login() {
+    const router = useRouter()
     return (
         <main className="flex min-h-screen flex-col items-center w-full lg:max-w-5xl px-24">
             <div
@@ -38,6 +40,7 @@ export default function Login() {
                         (document.querySelector('input[name="email"]') as HTMLInputElement).value,
                         (document.querySelector('input[name="password"]') as HTMLInputElement).value
                     )
+                    router.push('/')
                 }} text="Log in"/>
             </div>
         </main>
