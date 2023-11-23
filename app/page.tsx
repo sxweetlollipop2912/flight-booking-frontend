@@ -7,9 +7,9 @@ export default async function App() {
 
     return (
         <main className="flex min-h-screen flex-col items-center w-full lg:max-w-5xl px-24">
-            <div className="pt-10 mb-32 flex flex-col text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
-            </div>
-
+            <h1 className="mb-16 text-4xl font-semibold transition-transform group-hover:translate-x-2 motion-reduce:transform-none">
+                Tickets for Sale
+            </h1>
             <div className="mb-32 flex flex-col text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:text-left">
                 {
                     tickets.map((ticket: TICKET) =>

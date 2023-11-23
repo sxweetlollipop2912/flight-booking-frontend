@@ -4,5 +4,5 @@ export type TICKET = {
     destination: string,
     depart_time: string,
     arrive_time: string,
-    price: string
+    price: number,
 }
